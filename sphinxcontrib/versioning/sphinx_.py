@@ -96,7 +96,7 @@ class EventHandlers(object):
         context['current_version'] = cls.CURRENT_VERSION
         context['github_version'] = cls.CURRENT_VERSION
         context['html_theme'] = app.config.html_theme
-        context['scv_is_release_candidate'] = 'rc' in banner_main_remote['name']
+        context['scv_is_release_candidate'] = 'rc' in cls.CURRENT_VERSION
         context['scv_banner_greatest_tag'] = cls.BANNER_GREATEST_TAG
         context['scv_banner_main_ref_is_branch'] = banner_main_remote['kind'] == 'heads' if cls.SHOW_BANNER else None
         context['scv_banner_main_ref_is_tag'] = banner_main_remote['kind'] == 'tags' if cls.SHOW_BANNER else None
