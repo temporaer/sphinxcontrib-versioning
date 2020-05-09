@@ -9,6 +9,8 @@
     {# Determine base message. #}
     {%- if scv_is_branch %}
         {%- set banner_message = '<b>Warning:</b> This document is for the development version of %s.'|format(project) %}
+    {%- elif scv_is_release_candidate %}
+        {%- set banner_message = '<b>Warning:</b> This document is for a release candidate version of %s.'|format(project) %}
     {%- else %}
         {%- set banner_message = '<b>Warning:</b> This document is for an old version of %s.'|format(project) %}
     {%- endif %}
@@ -16,7 +18,7 @@
     {%- if vhasdoc(scv_banner_main_version) %}
         {%- set banner_message = '<a href="%s">' + banner_message + ' The %s version is %s.</a>' %}
         {%- if scv_banner_main_ref_is_tag %}
-            {%- set banner_message = banner_message|format(vpathto(scv_banner_main_version), 'latest', scv_banner_main_version) %}
+            {%- set banner_message = banner_message|format(vpathto(scv_banner_main_version), 'latest stable', scv_banner_main_version) %}
         {%- else %}
             {%- set banner_message = banner_message|format(vpathto(scv_banner_main_version), 'main', scv_banner_main_version) %}
         {%- endif %}
